@@ -37,7 +37,7 @@ const Login = () => {
             localStorage.setItem("token", data.token);
 
             // Redirect to home/dashboard
-            setTimeout(() => navigate("/"), 1800);
+            setTimeout(() => navigate("/"), 2000);
         } catch (err) {
             console.error(err.response?.data || err.message);
             toast.error(err.response?.data?.message || "Login failed", { autoClose: 1500 });

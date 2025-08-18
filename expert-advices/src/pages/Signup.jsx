@@ -36,7 +36,7 @@ const Signup = () => {
       toast.success("Account created successfully 🎉", { autoClose: 1500 });
       setFormData({ name: "", email: "", password: "" });
 
-      setTimeout(() => navigate("/login"), 1800);
+      setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       toast.error(error.response?.data?.message || "Signup failed!", { autoClose: 2000 });
     } finally {
