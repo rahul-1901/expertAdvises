@@ -29,7 +29,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("http://localhost:3000/api/auth/login", formData);
+            const { data } = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, formData);
 
             toast.success(`Welcome back!`, { autoClose: 1500 });
 

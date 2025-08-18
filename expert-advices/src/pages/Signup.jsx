@@ -31,7 +31,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post("http://localhost:3000/api/auth/signup", formData);
+      const { data } = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/auth/signup`, formData);
 
       toast.success("Account created successfully 🎉", { autoClose: 1500 });
       setFormData({ name: "", email: "", password: "" });
