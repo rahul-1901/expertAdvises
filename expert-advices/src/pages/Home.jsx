@@ -1,33 +1,39 @@
-import React, { useEffect } from 'react';
-import bgImage from '../assets/bg.png';
-import './Home.css'
-import hdfc from '../assets/hdfc.png'
-import icici from '../assets/icici.png'
-import bajaj from '../assets/bajaj.png'
-import axis from '../assets/axis.png'
-import tata from '../assets/tata.png'
-import icici1 from '../assets/icici1.png'
-import reliance from '../assets/reliance.png'
-import magma from '../assets/magma.png'
-import manipal from '../assets/manipal.png'
-import chola from '../assets/chora.png'
-import care from '../assets/care.png'
-import niva from '../assets/niva.png'
-import aditya from '../assets/aditya.png'
-import hdfc1 from '../assets/hdfc1.png'
-import digit from '../assets/digit.png'
-import sbi from '../assets/sbi.png'
-import national from '../assets/national.png'
-import iifco from '../assets/iffco.png'
-import zurich from '../assets/zurich.png'
-import united from '../assets/united.png'
-import oriental from '../assets/oriental.png'
-import CountUp from '../components/CountUp'
-import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, FaPinterest } from 'react-icons/fa';
-import { Users, Award, Target, Star } from 'lucide-react';
-import FAQ from '../components/Faq'
-import Footer from '../components/Footer'
-import CardSwipe from "@/components/ui/card-swipe"
+import React, { useEffect, useState } from "react";
+import bgImage from "../assets/bg.png";
+import "./Home.css";
+import hdfc from "../assets/hdfc.png";
+import icici from "../assets/icici.png";
+import bajaj from "../assets/bajaj.png";
+import axis from "../assets/axis.png";
+import tata from "../assets/tata.png";
+import icici1 from "../assets/icici1.png";
+import reliance from "../assets/reliance.png";
+import magma from "../assets/magma.png";
+import manipal from "../assets/manipal.png";
+import chola from "../assets/chora.png";
+import care from "../assets/care.png";
+import niva from "../assets/niva.png";
+import aditya from "../assets/aditya.png";
+import hdfc1 from "../assets/hdfc1.png";
+import digit from "../assets/digit.png";
+import sbi from "../assets/sbi.png";
+import national from "../assets/national.png";
+import iifco from "../assets/iffco.png";
+import zurich from "../assets/zurich.png";
+import united from "../assets/united.png";
+import oriental from "../assets/oriental.png";
+import CountUp from "../components/CountUp";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube,
+  FaInstagram,
+  FaPinterest,
+} from "react-icons/fa";
+import { Users, Award, Target, Star } from "lucide-react";
+import FAQ from "../components/Faq";
+import Footer from "../components/Footer";
+import CardSwipe from "@/components/ui/card-swipe";
 
 const features = [
   {
@@ -35,37 +41,37 @@ const features = [
     description: "We tailor our services to meet your unique needs.",
     borderColor: "border-l-yellow-400",
     textColor: "text-gray-700",
-    animation: "cardFloat"
+    animation: "cardFloat",
   },
   {
     title: "Expertise You Can Trust",
     description: "Our advisors have deep financial market knowledge.",
     borderColor: "border-l-blue-400",
     textColor: "text-gray-700",
-    animation: "cardFloat1"
+    animation: "cardFloat1",
   },
   {
     title: "Long-Term Relationships",
     description: "We build trust-based, lasting client partnerships.",
     borderColor: "border-l-green-400",
     textColor: "text-gray-900",
-    animation: "cardFloat2"
+    animation: "cardFloat2",
   },
   {
     title: "Results-Driven",
     description: "We help you reach financial goals confidently.",
     borderColor: "border-l-purple-400",
     textColor: "text-gray-900",
-    animation: "cardFloat3"
+    animation: "cardFloat3",
   },
   {
     title: "Qualified Professionals",
     description: "Our team stays sharp through constant learning.",
     borderColor: "border-l-red-400",
     textColor: "text-gray-900",
-    animation: "cardFloat4"
-  }
-]
+    animation: "cardFloat4",
+  },
+];
 
 const partners = [
   icici,
@@ -88,119 +94,138 @@ const partners = [
   iifco,
   zurich,
   united,
-  oriental
-]
+  oriental,
+];
 
 const teamMembers = [
   {
     id: 1,
     name: "Sonam Saxena",
     role: "Managing Director",
-    image: "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
+    image:
+      "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
     gradient: "from-blue-900/60 to-blue-900/80",
-    bgColor: "bg-indigo-50/50"
+    bgColor: "bg-indigo-50/50",
   },
   {
     id: 2,
     name: "Ravina Bhargav",
     role: "Unit Head",
-    image: "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
+    image:
+      "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
     gradient: "from-blue-900/60 to-blue-900/80",
-    bgColor: "bg-indigo-50/50"
+    bgColor: "bg-indigo-50/50",
   },
   {
     id: 3,
     name: "Mansi Mishra",
     role: "HR Manager",
-    image: "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
+    image:
+      "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
     gradient: "from-blue-900/60 to-blue-900/80",
-    bgColor: "bg-indigo-50/50"
+    bgColor: "bg-indigo-50/50",
   },
   {
     id: 4,
     name: "Jaya Sharma",
     role: "HR Executive",
-    image: "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
+    image:
+      "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
     gradient: "from-blue-900/60 to-blue-900/80",
-    bgColor: "bg-indigo-50/50"
-  }
+    bgColor: "bg-indigo-50/50",
+  },
 ];
-
 
 const iconMap = {
   0: Award,
   1: Target,
   2: Users,
   3: Star,
-}
+};
 
 const ChooseUs = () => {
+  const images = [
+    "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGZpbmFuY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+    "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+    "https://plus.unsplash.com/premium_photo-1661443781814-333019eaad2d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1251",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            entry.target.classList.add('fade-in-left');
+            entry.target.classList.add("fade-in");
+            entry.target.classList.add("fade-in-left");
           }
-        })
+        });
       },
       { threshold: 0.1 }
     );
 
-    const sections = document.querySelectorAll('.fade-section, .fade-section1, .fade-section2, .fade-left1, .fade-left2, .fade-left3, .fade-left4');
+    const sections = document.querySelectorAll(
+      ".fade-section, .fade-section1, .fade-section2, .fade-left1, .fade-left2, .fade-left3, .fade-left4"
+    );
     sections.forEach((section) => observer.observe(section));
 
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, [])
+  }, []);
 
   return (
-
     <div className="min-h-screen overflow-hidden">
-
-      <div className="relative overflow-hidden">
-        <div
-          className="bgHome absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        >
-          <div className="absolute inset-0 bg-white/30"></div>
-        </div>
+      <div className="relative h-screen overflow-hidden">
+        {/* Background Carousel */}
+        {images.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[2000ms] ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ backgroundImage: `url(${img})` }}
+          >
+            <div className="absolute inset-0 bg-white/30"></div>
+          </div>
+        ))}
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center">
+        <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8 h-screen flex items-center bg-black/20">
           <div className="w-full lg:w-1/2">
             {/* Large Heading */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#00008B] leading-tight mb-4">
-              Empowering Your Growth with Smart Financial Solution -{' '}
+              Empowering Your Growth with Smart Financial Solution –{" "}
               <span className="text-[#1434A4]">Experts Advises</span>
             </h1>
 
             {/* Body Text */}
             <p className="text-lg md:text-xl text-blue-900 leading-relaxed mb-8 max-w-2xl font-normal">
-              From investments to insurance, Experts Advises provides complete trusted solutions for your financial peace of Mind
+              From investments to insurance, Experts Advises provides complete
+              trusted solutions for your financial peace of mind.
             </p>
 
-            {/* Call-to-Action Buttons */}
+            {/* Buttons */}
             <div className="flex flex-row gap-3">
-              {/* Learn More Button */}
-              <button className="bg-white fade-section cursor-pointer hover:bg-gray-50 text-black border-1 border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              <button className="bg-white fade-section cursor-pointer hover:bg-gray-50 text-black border border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                 Learn More
               </button>
 
-              {/* Get Consultant Button */}
-              <button className="bg-blue-900 fade-section1 cursor-pointer hover:bg-blue-900/70 text-white border-1 border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-800 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              <button className="bg-blue-900 fade-section1 cursor-pointer hover:bg-blue-900/70 text-white border border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-800 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                 Get Consultant
               </button>
             </div>
           </div>
 
-          {/* Right side space for background image content */}
-          <div className="hidden lg:block lg:w-1/2">
-            {/* This space will be filled by your background image */}
-          </div>
+          <div className="hidden lg:block lg:w-1/2"></div>
         </div>
       </div>
 
@@ -227,7 +252,6 @@ const ChooseUs = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center lg:items-center gap-16">
-
             {/* Left Side - Question */}
             <div className="lg:w-1/2 text-center lg:text-left mt-10">
               <h1 className="text-[2.5rem] md:text-5xl lg:text-5xl text-gray-700 leading-tight md:mb-6">
@@ -260,7 +284,9 @@ const ChooseUs = () => {
               </div>
 
               {/* Second Row - 3 Cards */}
-              <div className={`flex flex-col md:flex-row flex-wrap gap-6 justify-start fade-section1`}>
+              <div
+                className={`flex flex-col md:flex-row flex-wrap gap-6 justify-start fade-section1`}
+              >
                 {features.slice(2).map((feature, index) => (
                   <div
                     key={index + 2}
@@ -284,10 +310,7 @@ const ChooseUs = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
-              Our{' '}
-              Optimistic
-              {' '}
-              Team
+              Our Optimistic Team
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-1">
               Meet the passionate individuals driving our success
@@ -303,11 +326,13 @@ const ChooseUs = () => {
                   key={member.id}
                   className={`group relative fade-left${member.id} transform transition-transform duration-[5000ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.05] will-change-transform`}
                 >
-                  <div className={`${member.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50`}>
-
-
+                  <div
+                    className={`${member.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50`}
+                  >
                     <div className="relative mb-6">
-                      <div className={`w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-r ${member.gradient}`}>
+                      <div
+                        className={`w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-r ${member.gradient}`}
+                      >
                         <img
                           src={member.image}
                           alt={member.name}
@@ -315,14 +340,18 @@ const ChooseUs = () => {
                         />
                       </div>
 
-                      <div className={`absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-20 scale-110 transition-all duration-300`}></div>
+                      <div
+                        className={`absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-20 scale-110 transition-all duration-300`}
+                      ></div>
                     </div>
 
                     <div className="text-center">
                       <h3 className="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300">
                         {member.name}
                       </h3>
-                      <div className={`inline-block bg-gradient-to-r ${member.gradient} px-4 py-1 rounded-full`}>
+                      <div
+                        className={`inline-block bg-gradient-to-r ${member.gradient} px-4 py-1 rounded-full`}
+                      >
                         <p className="text-sm font-medium text-white">
                           {member.role}
                         </p>
@@ -332,7 +361,9 @@ const ChooseUs = () => {
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
 
-                  <div className={`h-1 bg-gradient-to-r ${member.gradient} rounded-full mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center`}></div>
+                  <div
+                    className={`h-1 bg-gradient-to-r ${member.gradient} rounded-full mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center`}
+                  ></div>
                 </div>
               );
             })}
@@ -362,14 +393,18 @@ const ChooseUs = () => {
             <div
               className="slider"
               style={{
-                '--width': window.innerWidth >= 1024 ? '0rem' : '10rem', // w-40
-                '--height': '5rem', // h-20
-                '--quantity': 4
+                "--width": window.innerWidth >= 1024 ? "0rem" : "10rem", // w-40
+                "--height": "5rem", // h-20
+                "--quantity": 4,
               }}
             >
               <div className="list">
                 {partners.slice(5, 9).map((logo, index) => (
-                  <div key={index} className="item" style={{ '--position': index + 1 }}>
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
                     <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
@@ -387,14 +422,18 @@ const ChooseUs = () => {
               className="slider"
               reverse="true"
               style={{
-                '--width': '10rem',
-                '--height': '5rem',
-                '--quantity': 4,
+                "--width": "10rem",
+                "--height": "5rem",
+                "--quantity": 4,
               }}
             >
               <div className="list">
                 {partners.slice(9, 13).map((logo, index) => (
-                  <div key={index} className="item" style={{ '--position': index + 1 }}>
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
                     <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
@@ -419,14 +458,18 @@ const ChooseUs = () => {
             <div
               className="slider"
               style={{
-                '--width': window.innerWidth >= 1024 ? '0rem' : '10rem', // w-40
-                '--height': '5rem', // h-20
-                '--quantity': 3,
+                "--width": window.innerWidth >= 1024 ? "0rem" : "10rem", // w-40
+                "--height": "5rem", // h-20
+                "--quantity": 3,
               }}
             >
               <div className="list">
                 {partners.slice(0, 3).map((logo, index) => (
-                  <div key={index} className="item" style={{ '--position': index + 1 }}>
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
                     <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
@@ -444,14 +487,18 @@ const ChooseUs = () => {
               className="slider1"
               reverse="true"
               style={{
-                '--width': window.innerWidth >= 1024 ? '0rem' : '10rem', // w-40
-                '--height': '5rem', // h-20
-                '--quantity': 2,
+                "--width": window.innerWidth >= 1024 ? "0rem" : "10rem", // w-40
+                "--height": "5rem", // h-20
+                "--quantity": 2,
               }}
             >
               <div className="list">
                 {partners.slice(3, 5).map((logo, index) => (
-                  <div key={index + 3} className="item" style={{ '--position': index + 1 }}>
+                  <div
+                    key={index + 3}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
                     <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
@@ -479,14 +526,18 @@ const ChooseUs = () => {
             <div
               className="slider"
               style={{
-                '--width': window.innerWidth >= 1024 ? '0rem' : '10rem',
-                '--height': '5rem',
-                '--quantity': 4,
+                "--width": window.innerWidth >= 1024 ? "0rem" : "10rem",
+                "--height": "5rem",
+                "--quantity": 4,
               }}
             >
               <div className="list">
                 {partners.slice(13, 17).map((logo, index) => (
-                  <div key={index} className="item" style={{ '--position': index + 1 }}>
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
                     <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
@@ -504,14 +555,18 @@ const ChooseUs = () => {
               className="slider"
               reverse="true"
               style={{
-                '--width': '10rem',
-                '--height': '5rem',
-                '--quantity': 4,
+                "--width": "10rem",
+                "--height": "5rem",
+                "--quantity": 4,
               }}
             >
               <div className="list">
                 {partners.slice(17, 21).map((logo, index) => (
-                  <div key={index} className="item" style={{ '--position': index + 1 }}>
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
                     <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
@@ -530,9 +585,8 @@ const ChooseUs = () => {
       <FAQ />
 
       <CountUp />
-
     </div>
-  )
-}
+  );
+};
 
-export default ChooseUs; 
+export default ChooseUs;
