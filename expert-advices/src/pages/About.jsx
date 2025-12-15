@@ -1,35 +1,36 @@
-import React, { useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
-import './Home.css'
-import Footer from '../components/Footer'
-import ea from '../assets/ea.jpg'
+import React, { useEffect } from "react";
+import { ArrowRight } from "lucide-react";
+import "./Home.css";
+import Footer from "../components/Footer";
+import ea from "../assets/ea.jpg";
 import { Check } from "lucide-react";
 
 const About = () => {
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
+            entry.target.classList.add("fade-in");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const sections = document.querySelectorAll('.fade-section, .fade-section1, .fade-section2');
+    const sections = document.querySelectorAll(
+      ".fade-section, .fade-section1, .fade-section2"
+    );
     sections.forEach((section) => observer.observe(section));
 
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, [])
+  }, []);
 
   return (
     <>
-      <div className="relative aboutUs h-[100vh] overflow-hidden bg-no-repeat bg-cover bg-center" >
+      <div className="relative aboutUs h-[100vh] overflow-hidden bg-no-repeat bg-cover bg-center">
         {/* Overlay to soften background */}
         <div className="absolute inset-0 bg-gradient-to-r to-transparent z-10"></div>
 
@@ -41,8 +42,10 @@ const About = () => {
               <span className="text-blue-800/90">Financial Future</span>
             </h2>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              Facilisis, sapien vitae vestibulum feugiat, justo nulla sodales risus, ut dictum lorem sapien et erat.
-              Quisque ornare libero eu nulla tempor maximus.
+              We help individuals and businesses make smarter financial
+              decisions through expert guidance, transparent strategies and
+              personalized solutions. Our focus is on long-term growth,
+              security and building financial confidence you can rely on.
             </p>
           </div>
         </div>
@@ -61,7 +64,6 @@ const About = () => {
 
       <section className="px-6 py-14 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-
           {/* Left Circular Image */}
           <div className="w-82 mt-8 h-82 mx-auto bg-red-200 rounded-full overflow-hidden flex items-center justify-center">
             <img
@@ -78,11 +80,18 @@ const About = () => {
             </h2>
 
             <p className="text-gray-600 fade-section text-lg leading-relaxed mb-6">
-              Experts Advises Pvt. Ltd., based in Jaipur, is committed to empowering individuals and businesses in achieving their financial aspirations. We offer strategic, personalized financial planning and advisory services, with a focus on long-term wealth creation and financial security.
+              VP Experts Advises Pvt. Ltd., based in Jaipur, is committed to
+              empowering individuals and businesses in achieving their financial
+              aspirations. We offer strategic, personalized financial planning
+              and advisory services, with a focus on long-term wealth creation
+              and financial security.
             </p>
 
             <p className="text-gray-600 fade-section1 text-lg leading-relaxed">
-              We pride ourselves on our deep industry knowledge, client-centric approach, and a strong commitment to integrity and excellence. Our mission is to build trusted partnerships with our clients by guiding them through sound financial decisions.
+              We pride ourselves on our deep industry knowledge, client-centric
+              approach, and a strong commitment to integrity and excellence. Our
+              mission is to build trusted partnerships with our clients by
+              guiding them through sound financial decisions.
             </p>
           </div>
         </div>
@@ -104,11 +113,12 @@ const About = () => {
                 Integrity
               </h3>
               <p className="text-gray-600 fade-section mb-4">
-                We operate with transparency and honesty in every dealing with our clients and partners.
+                We operate with transparency and honesty in every dealing with
+                our clients and partners.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex fade-section items-center">
-                <Check size={20} className="text-blue-900 font-bold mr-2" />
+                  <Check size={20} className="text-blue-900 font-bold mr-2" />
                   Honest communication at all levels
                 </li>
                 <li className="flex fade-section items-center">
@@ -131,7 +141,8 @@ const About = () => {
                 Safety First
               </h3>
               <p className="text-gray-600 fade-section1 mb-4">
-                We prioritize the safety and well-being of both our employees and customers.
+                We prioritize the safety and well-being of both our employees
+                and customers.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex fade-section1 items-center">
@@ -161,7 +172,8 @@ const About = () => {
                 Respect
               </h3>
               <p className="text-gray-600  fade-section2 mb-4">
-                We treat every employee, customer, and partner with respect and fairness.
+                We treat every employee, customer, and partner with respect and
+                fairness.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex fade-section2 items-center">
@@ -173,7 +185,7 @@ const About = () => {
                   Equal opportunity for all
                 </li>
                 <li className="flex fade-section2 items-center">
-                 <Check size={20} className="text-blue-900 font-bold mr-2" />
+                  <Check size={20} className="text-blue-900 font-bold mr-2" />
                   Transparent feedback channels
                 </li>
               </ul>

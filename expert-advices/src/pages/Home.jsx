@@ -33,7 +33,9 @@ import {
 import { Users, Award, Target, Star } from "lucide-react";
 import FAQ from "../components/Faq";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 import CardSwipe from "@/components/ui/card-swipe";
+import { AnimatePresence, motion } from "framer-motion";
 
 const features = [
   {
@@ -109,8 +111,8 @@ const teamMembers = [
   },
   {
     id: 2,
-    name: "Ravina Bhargav",
-    role: "Unit Head",
+    name: "Mahesh Yadav",
+    role: "Management",
     image:
       "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
     gradient: "from-blue-900/60 to-blue-900/80",
@@ -118,8 +120,8 @@ const teamMembers = [
   },
   {
     id: 3,
-    name: "Mansi Mishra",
-    role: "HR Manager",
+    name: "Amit Kumar",
+    role: "Management",
     image:
       "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
     gradient: "from-blue-900/60 to-blue-900/80",
@@ -141,6 +143,33 @@ const iconMap = {
   1: Target,
   2: Users,
   3: Star,
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+    scale: 0.9,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
 };
 
 const ChooseUs = () => {
@@ -204,7 +233,7 @@ const ChooseUs = () => {
             {/* Large Heading */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#00008B] leading-tight mb-4">
               Empowering Your Growth with Smart Financial Solution –{" "}
-              <span className="text-[#1434A4]">Experts Advises</span>
+              <span className="text-[#1434A4]">VP Experts Advises</span>
             </h1>
 
             {/* Body Text */}
@@ -215,13 +244,22 @@ const ChooseUs = () => {
 
             {/* Buttons */}
             <div className="flex flex-row gap-3">
-              <button className="bg-white fade-section cursor-pointer hover:bg-gray-50 text-black border border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                Learn More
-              </button>
+              <Link
+                to="/about"
+                className="bg-white fade-section cursor-pointer hover:bg-gray-50 text-black border border-black px-6 py-3 rounded-full font-medium text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition duraction-300"
+              >
+                <button className="cursor-pointer">Learn More</button>
+              </Link>
 
-              <button className="bg-blue-900 fade-section1 cursor-pointer hover:bg-blue-900/70 text-white border border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-800 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                Get Consultant
-              </button>
+              <a
+                href="https://wa.me/919982222169?text=Hello%20I%20got%20here%20from%20your%20website%20and%20I%20am%20interested%20to%20talk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="bg-blue-900 fade-section1 cursor-pointer hover:bg-blue-900/70 text-white border border-black px-6 py-3 rounded-full font-medium text-base transition-all duration-800 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                  Get Consultant
+                </button>
+              </a>
             </div>
           </div>
 
@@ -259,7 +297,7 @@ const ChooseUs = () => {
                 <br />
                 <span className="text-blue-600"></span> you choose us
                 <br />
-                <span className="font-bold">Expert Advises</span>
+                <span className="font-bold">VP Expert Advises</span>
                 <br />
               </h1>
             </div>
@@ -317,14 +355,22 @@ const ChooseUs = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {teamMembers.map((member, index) => {
               const IconComponent = iconMap[index];
 
               return (
-                <div
+                <motion.div
                   key={member.id}
-                  className={`group relative fade-left${member.id} transform transition-transform duration-[5000ms] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-[1.05] will-change-transform`}
+                  variants={cardVariants}
+                  whileHover={{ scale: 1.05 }}
+                  className="group relative will-change-transform"
                 >
                   <div
                     className={`${member.bgColor} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50`}
@@ -342,11 +388,11 @@ const ChooseUs = () => {
 
                       <div
                         className={`absolute inset-0 w-24 h-24 mx-auto rounded-full bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-20 scale-110 transition-all duration-300`}
-                      ></div>
+                      />
                     </div>
 
                     <div className="text-center">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
                         {member.name}
                       </h3>
                       <div
@@ -358,16 +404,16 @@ const ChooseUs = () => {
                       </div>
                     </div>
 
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </div>
 
                   <div
                     className={`h-1 bg-gradient-to-r ${member.gradient} rounded-full mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center`}
-                  ></div>
-                </div>
+                  />
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -405,7 +451,7 @@ const ChooseUs = () => {
                     className="item"
                     style={{ "--position": index + 1 }}
                   >
-                    <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
                         alt={`Partner ${index + 6}`}
@@ -434,7 +480,7 @@ const ChooseUs = () => {
                     className="item"
                     style={{ "--position": index + 1 }}
                   >
-                    <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
                         alt={`Partner ${index + 10}`}
@@ -470,7 +516,7 @@ const ChooseUs = () => {
                     className="item"
                     style={{ "--position": index + 1 }}
                   >
-                    <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
                         alt={`Partner ${index + 1}`}
@@ -499,7 +545,7 @@ const ChooseUs = () => {
                     className="item"
                     style={{ "--position": index + 1 }}
                   >
-                    <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
                         alt={`Partner ${index + 4}`}
@@ -538,7 +584,7 @@ const ChooseUs = () => {
                     className="item"
                     style={{ "--position": index + 1 }}
                   >
-                    <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
                         alt={`Partner ${index + 14}`}
@@ -567,7 +613,7 @@ const ChooseUs = () => {
                     className="item"
                     style={{ "--position": index + 1 }}
                   >
-                    <div className="partner-logo w-40 h-20 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
                       <img
                         src={logo}
                         alt={`Partner ${index + 18}`}
@@ -576,6 +622,220 @@ const ChooseUs = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Loan Section */}
+          <div className="w-full py-10">
+            {/* Main Heading */}
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl text-gray-800">
+                Loans
+              </h2>
+            </div>
+
+            {/* Loan Types Grid */}
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+              {/* Home Loan */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl  text-gray-800">
+                  Home Loan
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[0]}
+                    alt="Home Loan"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Loan Against Property */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  Loan Against Property
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[1]}
+                    alt="Loan Against Property"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Personal Loan */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  Personal Loan
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[2]}
+                    alt="Personal Loan"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Business Loan */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  Business Loan
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[3]}
+                    alt="Business Loan"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-14">
+            <h2 className="text-2xl md:text-3xl text-gray-800 mb-1">
+              Mutual Funds
+            </h2>
+          </div>
+
+          <div className="w-full flex flex-col gap-4 items-center">
+            {/* Slider 1: 4 logos */}
+            <div
+              className="slider"
+              style={{
+                "--width": window.innerWidth >= 1024 ? "0rem" : "10rem",
+                "--height": "5rem",
+                "--quantity": 4,
+              }}
+            >
+              <div className="list">
+                {partners.slice(13, 17).map((logo, index) => (
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                      <img
+                        src={logo}
+                        alt={`Partner ${index + 14}`}
+                        className="grayscale hover:grayscale-0 transition-all duration-300 max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Slider 2: 4 logos (reverse) */}
+            <div
+              className="slider"
+              reverse="true"
+              style={{
+                "--width": "10rem",
+                "--height": "5rem",
+                "--quantity": 4,
+              }}
+            >
+              <div className="list">
+                {partners.slice(17, 21).map((logo, index) => (
+                  <div
+                    key={index}
+                    className="item"
+                    style={{ "--position": index + 1 }}
+                  >
+                    <div className="partner-logo w-50 h-22 p-2 border bg-white border-gray-200 flex items-center justify-center text-gray-600 font-bold text-sm transition-all duration-300 cursor-pointer">
+                      <img
+                        src={logo}
+                        alt={`Partner ${index + 18}`}
+                        className="grayscale hover:grayscale-0 transition-all duration-300 max-w-full max-h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full py-10">
+            {/* Main Heading */}
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl text-gray-800">
+                Fixed Deposit
+              </h2>
+            </div>
+
+            {/* Loan Types Grid */}
+            <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 px-4">
+              {/* Home Loan */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  Corporates
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[0]}
+                    alt="Home Loan"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Loan Against Property */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  Banks
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[1]}
+                    alt="Loan Against Property"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full py-10">
+            {/* Main Heading */}
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl text-gray-800">
+                Other Partner
+              </h2>
+            </div>
+
+            {/* Loan Types Grid */}
+            <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 px-4">
+              {/* Home Loan */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  PMS
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[3]}
+                    alt="Home Loan"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Loan Against Property */}
+              <div className="flex flex-col items-center text-center gap-4">
+                <h3 className="text-xl text-gray-800">
+                  AIF
+                </h3>
+                <div className="w-full h-30 bg-white border border-gray-200 rounded-md flex items-center justify-center p-4">
+                  <img
+                    src={partners[7]}
+                    alt="Loan Against Property"
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>

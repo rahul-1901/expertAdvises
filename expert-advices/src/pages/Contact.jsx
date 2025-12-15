@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import React, { useState } from "react";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -19,15 +19,15 @@ const Contact = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill in all required fields.');
+      alert("Please fill in all required fields.");
       return;
     }
 
-    alert('Message sent successfully!');
+    alert("Message sent successfully!");
     setFormData({
-      name: '',
-      email: '',
-      message: ''
+      name: "",
+      email: "",
+      message: "",
     });
   };
 
@@ -37,7 +37,8 @@ const Contact = () => {
       <div className="lg:w-[80%] w-full bg-white px-6 sm:px-10 lg:px-16 py-16 flex flex-col justify-center">
         <h2 className="text-3xl font-bold mb-2 text-gray-900">Get in touch</h2>
         <p className="text-sm text-gray-600 mb-8 max-w-md">
-          Need assistance or have inquiries? Our team is always ready to support you — just drop us a message!
+          Need assistance or have inquiries? Our team is always ready to support
+          you — just drop us a message!
         </p>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -99,32 +100,54 @@ const Contact = () => {
           <div>
             <h2 className="text-2xl font-bold mt-20">Contact Info</h2>
             <p className="text-sm max-w-xs leading-relaxed">
-              Feel Free To Contact Us And<br />
+              Feel Free To Contact Us And
+              <br />
               Reach Us For More Info !
             </p>
           </div>
 
-          <div className=''>
-            <div className="text-sm leading-6">
-              <p className="font-semibold">expertsadvisespvtltd@gmail.com</p>
-              <p className='font-semibold'>+91 8871528390</p>
-              <p className='font-semibold'> office no. 506 , 5th floor, commercial building ,<br /> plaza madyam, mansarovar, jaipur 302020</p>
+          <div className="">
+            <div className="text-sm leading-6 space-y-2">
+              <p className="font-semibold">
+                info@vpexpertadvisor.com, loans@vpexpertadvisor.com
+              </p>
+              <p className="font-semibold">+91 8871528390</p>
+              <p className="font-semibold">
+                {" "}
+                Office no F5 A, 2nd floor, Shiv Sadan, opp SBI bank / Metro
+                Pillar 97, IIFL building, Vivek Vihar, Sodala, Jaipur, 302006
+              </p>
             </div>
 
             <div>
               <p className="text-sm mb-2 mt-5">Follow us on</p>
               <div className="flex space-x-4 justify-end">
-                <a href="#"><Facebook size={18} /></a>
-                <a href="#"><Twitter size={18} /></a>
-                <a href="#"><Instagram size={18} /></a>
-                <a href="#"><Linkedin size={18} /></a>
+                <a href="#">
+                  <Facebook size={18} />
+                </a>
+                <a href="#">
+                  <Twitter size={18} />
+                </a>
+                <a href="#">
+                  <Instagram size={18} />
+                </a>
+                <a href="#">
+                  <Linkedin size={18} />
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         {/* Decorative shapes */}
-        <svg className="absolute top-28 left-6 opacity-40" width="40" height="40" fill="none" stroke="white" strokeWidth="2">
+        <svg
+          className="absolute top-28 left-6 opacity-40"
+          width="40"
+          height="40"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+        >
           <polygon points="0,20 30,10 30,30" />
         </svg>
         <div className="absolute top-[45%] right-[-24px] w-24 h-24 border-[12px] border-white/30 rounded-full opacity-20" />
@@ -132,7 +155,10 @@ const Contact = () => {
         <div className="absolute bottom-10 left-4 grid grid-cols-4 gap-1 opacity-20">
           {[...Array(4)].map((_, i) =>
             [...Array(4)].map((_, j) => (
-              <div key={`${i}-${j}`} className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+              <div
+                key={`${i}-${j}`}
+                className="w-1.5 h-1.5 bg-white/40 rounded-full"
+              />
             ))
           )}
         </div>

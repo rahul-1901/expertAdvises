@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { Award, HandCoins, HeartPulse } from 'lucide-react';
-import './Home.css'
+import React, { useState, useEffect } from "react";
+import { Award, HandCoins, HeartPulse } from "lucide-react";
+import "./Home.css";
 
 const jobs = [
   {
-    title: 'Head Supervisor',
-    type: 'Full Time / Part Time',
-    desc: 'Magna voluptatum dolorem! Dolores! Sociosqu commodo nobis imperdiet lacinia entum nobis.'
+    title: "Head Supervisor",
+    type: "Full Time / Part Time",
+    desc: "Lead and manage field teams, oversee daily operations, ensure service quality, and coordinate with management to achieve business targets and client satisfaction.",
   },
   {
-    title: 'Accountant',
-    type: 'Full Time',
-    desc: 'Magna voluptatum dolorem! Dolores! Sociosqu commodo nobis imperdiet lacinia entum nobis.'
+    title: "Accountant",
+    type: "Full Time",
+    desc: "Handle company accounts, maintain financial records, manage invoices and taxation, and ensure compliance with accounting standards and financial regulations.",
   },
   {
-    title: 'Field Inspector',
-    type: 'Part Time',
-    desc: 'Magna voluptatum dolorem! Dolores! Sociosqu commodo nobis imperdiet lacinia entum nobis.'
+    title: "Field Inspector",
+    type: "Part Time",
+    desc: "Conduct on-site inspections, verify documents and client details, submit inspection reports, and support underwriting and verification processes.",
   },
   {
-    title: 'Insurance Agent',
-    type: 'Full Time / Part Time',
-    desc: 'Magna voluptatum dolorem! Dolores! Sociosqu commodo nobis imperdiet lacinia entum nobis.'
-  }
+    title: "Insurance Agent",
+    type: "Full Time / Part Time",
+    desc: "Advise clients on suitable insurance products, generate leads, build long-term customer relationships, and assist customers throughout the policy lifecycle.",
+  },
 ];
 
 const Career = () => {
-
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    position: '',
-    message: '',
+    name: "",
+    email: "",
+    position: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -42,10 +41,10 @@ const Career = () => {
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    if (!formData.position.trim()) newErrors.position = 'Position is required';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.position.trim()) newErrors.position = "Position is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
     return newErrors;
   };
 
@@ -60,15 +59,15 @@ const Career = () => {
     setErrors({});
 
     // Handle submission (replace this with an actual API later)
-    console.log('Form Submitted:', formData);
-    alert('Your application has been submitted!');
+    console.log("Form Submitted:", formData);
+    alert("Your application has been submitted!");
 
     // Clear form
     setFormData({
-      name: '',
-      email: '',
-      position: '',
-      message: '',
+      name: "",
+      email: "",
+      position: "",
+      message: "",
     });
   };
 
@@ -77,14 +76,16 @@ const Career = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
+            entry.target.classList.add("fade-in");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const sections = document.querySelectorAll('.fade-section, .fade-section1, .fade-section2');
+    const sections = document.querySelectorAll(
+      ".fade-section, .fade-section1, .fade-section2"
+    );
     sections.forEach((section) => observer.observe(section));
 
     return () => {
@@ -98,14 +99,20 @@ const Career = () => {
       <div className="bg-blue-900/70 px-4 py-20 lg:px-24">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-sm font-semibold text-gray-800 uppercase mb-3">Book Appointment</p>
+            <p className="text-sm font-semibold text-gray-800 uppercase mb-3">
+              Book Appointment
+            </p>
             <h2 className="text-4xl text-white font-bold border-l-4 border-gray-900/70 pl-4">
-              Our Company Has Been Present For Over 25 Years
+              Our Company Has Been Trusted For Over 25 Years
             </h2>
           </div>
+
           <p className="text-black text-sm max-w-lg leading-relaxed">
-            Magina voluptatum doloriem! Dolores! Sociosqii commodiin nobis imperdiet lacinia? Magni! Felis,
-            elementum nobis imperdiet lacinia nobis imperdiet lacinia commodo nobis imper lacinia nobis imperd.
+            With more than two decades of experience, we have helped individuals
+            and businesses make confident financial decisions. Our expertise
+            spans investment planning, insurance advisory, and long-term
+            financial security, backed by transparent processes and dedicated
+            support.
           </p>
         </div>
 
@@ -116,8 +123,13 @@ const Career = () => {
             <div className="bg-gray-900 text-white rounded-full px-4 py-4 mb-4">
               <Award size={32} />
             </div>
-            <h4 className="font-bold text-lg text-gray-900 mb-1">Award Winning</h4>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consec teturing.</p>
+            <h4 className="font-bold text-lg text-gray-900 mb-1">
+              Award-Winning Service
+            </h4>
+            <p className="text-sm text-gray-600">
+              Recognized for delivering consistent results, client satisfaction
+              and excellence in financial and insurance advisory services.
+            </p>
           </div>
 
           {/* Card 2 */}
@@ -125,8 +137,13 @@ const Career = () => {
             <div className="bg-gray-900 text-white rounded-full p-4 mb-4">
               <HandCoins size={32} />
             </div>
-            <h4 className="font-bold text-lg text-gray-900 mb-1">Well Allowance</h4>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consec teturing.</p>
+            <h4 className="font-bold text-lg text-gray-900 mb-1">
+              Transparent Financial Benefits
+            </h4>
+            <p className="text-sm text-gray-600">
+              We offer clear, well-structured financial plans and allowances
+              that prioritize long-term value and client trust.
+            </p>
           </div>
 
           {/* Card 3 */}
@@ -134,11 +151,24 @@ const Career = () => {
             <div className="bg-gray-900 text-white rounded-full p-4 mb-4">
               <HeartPulse size={32} />
             </div>
-            <h4 className="font-bold text-lg text-gray-900 mb-1">Full Insurance</h4>
-            <p className="text-sm text-gray-600">Lorem ipsum dolor sit amet, consec teturing.</p>
+            <h4 className="font-bold text-lg text-gray-900 mb-1">
+              Comprehensive Insurance Coverage
+            </h4>
+            <p className="text-sm text-gray-600">
+              End-to-end insurance solutions designed to protect your health,
+              assets and financial future with complete peace of mind.
+            </p>
           </div>
         </div>
-        <svg className="absolute top-28 left-6 opacity-40" width="40" height="40" fill="none" stroke="white" strokeWidth="2">
+
+        <svg
+          className="absolute top-28 left-6 opacity-40"
+          width="40"
+          height="40"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+        >
           <polygon points="0,20 30,10 30,30" />
         </svg>
         <div className="absolute top-[45%] right-[-24px] w-24 h-24 border-[12px] border-white/30 rounded-full opacity-20" />
@@ -146,7 +176,10 @@ const Career = () => {
         <div className="absolute bottom-10 left-4 grid grid-cols-4 gap-1 opacity-20">
           {[...Array(4)].map((_, i) =>
             [...Array(4)].map((_, j) => (
-              <div key={`${i}-${j}`} className="w-1.5 h-1.5 bg-white/40 rounded-full" />
+              <div
+                key={`${i}-${j}`}
+                className="w-1.5 h-1.5 bg-white/40 rounded-full"
+              />
             ))
           )}
         </div>
@@ -157,8 +190,12 @@ const Career = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-xs font-bold text-gray-900 uppercase">Join us now</p>
-            <h2 className="text-4xl font-semibold text-gray-900 mt-2">Let's Join With Us !!</h2>
+            <p className="text-xs font-bold text-gray-900 uppercase">
+              Join us now
+            </p>
+            <h2 className="text-4xl font-semibold text-gray-900 mt-2">
+              Let's Join With Us !!
+            </h2>
             <div className="w-20 h-1 bg-gray-900 mx-auto mt-2 rounded-xl" />
           </div>
 
@@ -171,8 +208,12 @@ const Career = () => {
                   key={idx}
                   className="bg-white rounded-lg shadow-md p-6 border hover:shadow-lg transition"
                 >
-                  <p className="text-xs font-bold uppercase text-gray-800 mb-2">{job.type}</p>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{job.title}</h3>
+                  <p className="text-xs font-bold uppercase text-gray-800 mb-2">
+                    {job.type}
+                  </p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {job.title}
+                  </h3>
                   <p className="text-sm text-gray-600 mb-4">{job.desc}</p>
                   <button className="px-6 py-3 text-white bg-gray-900 hover:bg-gray-800 text-sm cursor-pointer font-semibold rounded-lg">
                     APPLY NOW
@@ -228,7 +269,9 @@ const Career = () => {
                   onChange={handleChange}
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white focus:outline-none"
                 />
-                {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
+                {errors.name && (
+                  <p className="text-red-400 text-sm">{errors.name}</p>
+                )}
 
                 <input
                   type="email"
@@ -238,7 +281,9 @@ const Career = () => {
                   onChange={handleChange}
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white focus:outline-none"
                 />
-                {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-red-400 text-sm">{errors.email}</p>
+                )}
 
                 <input
                   type="text"
@@ -248,7 +293,9 @@ const Career = () => {
                   onChange={handleChange}
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white focus:outline-none"
                 />
-                {errors.position && <p className="text-red-400 text-sm">{errors.position}</p>}
+                {errors.position && (
+                  <p className="text-red-400 text-sm">{errors.position}</p>
+                )}
 
                 <textarea
                   name="message"
@@ -258,7 +305,9 @@ const Career = () => {
                   onChange={handleChange}
                   className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-white focus:outline-none"
                 ></textarea>
-                {errors.message && <p className="text-red-400 text-sm">{errors.message}</p>}
+                {errors.message && (
+                  <p className="text-red-400 text-sm">{errors.message}</p>
+                )}
 
                 <button
                   type="submit"

@@ -348,7 +348,7 @@ const Navbar = () => {
             </Link>
 
             {/* Conditionally render auth buttons */}
-            {!isAuthenticated ? (
+            {/* {!isAuthenticated ? (
               <>
                 <Link to="/login">
                   <button className="bg-blue-900/90 hover:bg-blue-900/80 text-white px-6 py-2 rounded-full  cursor-pointer font-medium text-sm">
@@ -368,7 +368,7 @@ const Navbar = () => {
               >
                 Logout
               </button>
-            )}
+            )} */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -447,7 +447,7 @@ const Navbar = () => {
                 Contact Us
               </Link>
 
-              {!isAuthenticated ? (
+              {/* {!isAuthenticated ? (
                 <>
                   <Link to="/login">
                     <button className="w-full  cursor-pointer bg-blue-900 text-white py-2 rounded-full">
@@ -467,7 +467,7 @@ const Navbar = () => {
                 >
                   Logout
                 </button>
-              )}
+              )} */}
             </div>
           </motion.div>
         )}
