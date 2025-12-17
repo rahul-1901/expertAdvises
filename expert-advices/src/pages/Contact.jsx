@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,20 +16,44 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in all required fields.");
+    // basic validation example
+    if (!formData.name || !formData.email) {
+      setErrors({ submit: "Please fill all required fields" });
       return;
     }
 
-    alert("Message sent successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
+    const googleFormURL =
+      "https://docs.google.com/forms/d/e/1FAIpQLSczNzpJ66pOoN0XZSVoTCpKh0PLNaf0eUAWPq_CayyWUijeVQ/formResponse";
+
+    const formBody = new FormData();
+    formBody.append("entry.277017107", formData.name);
+    formBody.append("entry.868455030", formData.email);
+    formBody.append("entry.1602575840", formData.message);
+
+    try {
+      await fetch(googleFormURL, {
+        method: "POST",
+        body: formBody,
+        mode: "no-cors", // REQUIRED
+      });
+
+      // success (no response available because of no-cors)
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+
+      toast.success("Will reach out to you shortly!!", { autoClose: 1500 });
+    } catch (error) {
+      console.error("Error submitting form", error);
+      toast.success("Something went wrong, try again later....", {
+        autoClose: 1500,
+      });
+    }
   };
 
   return (

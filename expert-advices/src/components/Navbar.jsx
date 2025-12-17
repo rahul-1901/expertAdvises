@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo.png";
+import logo from "../assets/ea.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -40,7 +40,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <img className="w-12 h-10" src={logo} alt="Logo" />
+            <img className="w-10 h-8" src={logo} alt="Logo" />
+            <p className="font-bold text-lg -mt-1 -ml-2">EXPERT ADVISES</p>
           </Link>
 
           {/* Desktop Nav */}

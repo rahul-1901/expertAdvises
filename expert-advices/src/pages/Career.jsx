@@ -235,9 +235,9 @@ const Career = () => {
                     {job.title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-4">{job.desc}</p>
-                  <button className="px-6 py-3 text-white bg-gray-900 hover:bg-gray-800 text-sm cursor-pointer font-semibold rounded-lg">
+                  {/* <button className="px-6 py-3 text-white bg-gray-900 hover:bg-gray-800 text-sm cursor-pointer font-semibold rounded-lg">
                     APPLY NOW
-                  </button>
+                  </button> */}
                 </div>
               ))}
             </div>
