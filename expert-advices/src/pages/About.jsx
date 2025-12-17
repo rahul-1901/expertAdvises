@@ -68,7 +68,7 @@ const About = () => {
           <div className="w-82 mt-8 h-82 mx-auto bg-red-200 rounded-full overflow-hidden flex items-center justify-center">
             <img
               src={ea}
-              alt="About Experts Advises"
+              alt="About VP Experts Advises"
               className="w-full h-full object-cover"
             />
           </div>

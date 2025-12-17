@@ -15,6 +15,9 @@ import MutualFunds from './pages/MutualFunds'
 import Health from './pages/Health'
 import Life from './pages/Life'
 import General from './pages/General'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
 
@@ -37,6 +40,7 @@ function App() {
         </Routes>
         <Footer />
         <ScrollTopButton />
+        <ToastContainer style={{ zIndex: 999999 }}/>
       </Router>
     </>
   )

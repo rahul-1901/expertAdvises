@@ -127,15 +127,15 @@ const teamMembers = [
     gradient: "from-blue-900/60 to-blue-900/80",
     bgColor: "bg-indigo-50/50",
   },
-  {
-    id: 4,
-    name: "Jaya Sharma",
-    role: "HR Executive",
-    image:
-      "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
-    gradient: "from-blue-900/60 to-blue-900/80",
-    bgColor: "bg-indigo-50/50",
-  },
+  // {
+  //   id: 4,
+  //   name: "Jaya Sharma",
+  //   role: "HR Executive",
+  //   image:
+  //     "https://media.istockphoto.com/id/1451587807/vector/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector.jpg?s=612x612&w=0&k=20&c=yDJ4ITX1cHMh25Lt1vI1zBn2cAKKAlByHBvPJ8gEiIg=",
+  //   gradient: "from-blue-900/60 to-blue-900/80",
+  //   bgColor: "bg-indigo-50/50",
+  // },
 ];
 
 const iconMap = {
@@ -238,7 +238,7 @@ const ChooseUs = () => {
 
             {/* Body Text */}
             <p className="text-lg md:text-xl text-blue-900 leading-relaxed mb-8 max-w-2xl font-normal">
-              From investments to insurance, Experts Advises provides complete
+              From investments to insurance, VP Experts Advises provides complete
               trusted solutions for your financial peace of mind.
             </p>
 
@@ -360,7 +360,7 @@ const ChooseUs = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-15"
           >
             {teamMembers.map((member, index) => {
               const IconComponent = iconMap[index];

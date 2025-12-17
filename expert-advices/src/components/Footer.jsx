@@ -179,10 +179,10 @@ const Footer = () => {
                   <Mail size={20} className="text-white" />
                   <div className="flex items-center gap-1">
                     <a href="mailto:info@vpexpertadvisor.com">
-                      info@vpexpertadvisor.com,
+                      info@vpexpertsadvises.com,
                     </a>
                     <a href="mailto:loans@vpexpertadvisor.com">
-                      loans@vpexpertadvisor.com
+                      loans@vpexpertsadvises.com
                     </a>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Award, HandCoins, HeartPulse } from "lucide-react";
 import "./Home.css";
+import { toast } from "react-toastify";
 
 const jobs = [
   {
@@ -48,27 +49,46 @@ const Career = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+
+    // basic validation example
+    if (!formData.name || !formData.email || !formData.position) {
+      setErrors({ submit: "Please fill all required fields" });
       return;
     }
-    // Reset errors
-    setErrors({});
 
-    // Handle submission (replace this with an actual API later)
-    console.log("Form Submitted:", formData);
-    alert("Your application has been submitted!");
+    const googleFormURL =
+      "https://docs.google.com/forms/d/e/1FAIpQLSc2aHV1_O7w5-EpHtiBehXdZu0jb76tPAFBz7vOS0PbjKKZ_Q/formResponse";
 
-    // Clear form
-    setFormData({
-      name: "",
-      email: "",
-      position: "",
-      message: "",
-    });
+    const formBody = new FormData();
+    formBody.append("entry.1199960558", formData.name);
+    formBody.append("entry.1702953746", formData.email);
+    formBody.append("entry.2139503846", formData.position);
+    formBody.append("entry.505912037", formData.message);
+
+    try {
+      await fetch(googleFormURL, {
+        method: "POST",
+        body: formBody,
+        mode: "no-cors", // REQUIRED
+      });
+
+      // success (no response available because of no-cors)
+      setFormData({
+        name: "",
+        email: "",
+        position: "",
+        message: "",
+      });
+
+      toast.success("Will reach out to you shortly!!", { autoClose: 1500 });
+    } catch (error) {
+      console.error("Error submitting form", error);
+      toast.success("Something went wrong, try again later....", {
+        autoClose: 1500,
+      });
+    }
   };
 
   useEffect(() => {
